@@ -8,7 +8,6 @@ from pybricks.robotics import DriveBase
 from pybricks.media.ev3dev import SoundFile, ImageFile
 from pybricks.iodevices import Ev3devSensor
 from pybricks.nxtdevices import LightSensor
-# micropython module umath not pybricks module
 import math as math
 import time
 ev3 = EV3Brick()
@@ -55,7 +54,6 @@ def getRotation():
     #return angle in decimals
     return newHeading
 
-#should be ok. TODO needs testing
 def updateLocation():
     global locationToLine
     angle = getRotation()
@@ -92,7 +90,7 @@ def moveToLine():
         print("we are on the left side")
         if(degreesToLine<0):
             turn = abs(degreesToLine)
-            time.sleep(1)
+            time.sleep(1) 
             base.turn(turn + 90)
         if(degreesToLine>0):
             ev3.speaker.beep()
@@ -108,21 +106,15 @@ def moveToLine():
             base.straight(500)
         else:
             movement()
-    #TODO troubleshoot this condition:
-    #TODO Check robot turns on different angles = 360 worked fine. what about 180? 90? 20?
+
     if locationToLine > 0:
         print("We are on the right side of the area")
         if(degreesToLine<0):
-            print("degreestoLine when <0")
-            print(degreesToLine)
             base.turn(degreesToLine - 90)
         if(degreesToLine>0):
             degreesToLine = -degreesToLine - 90
-            print("degreesTo line when >0")
-            #sleep for 3 seconds for troubleshooting
             ev3.speaker.beep()
             time.sleep(1)
-            print(degreesToLine)
             base.turn(20)
             base.turn(-20)
             base.turn(degreesToLine)
@@ -153,15 +145,10 @@ def readAndMove():
     color_sensor_value = color_sensor.reflection()
     ballControl = checkBallControl()
     time.sleep(0.5)
-    #color_sensor_value > 3 and 
-    if (ballControl): #and ballControl
+    if (ballControl):
         base.straight(abs(locationToLine))
-        #readAndMove()
-    #if(ballControl == False):
-    #    movement()
 
 
-# works ok
 def movement():
     left_ir_sensor_value = left_ir_sensor.read("DC")
     right_ir_sensor_value = right_ir_sensor.read("DC")
