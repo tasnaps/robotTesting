@@ -1,4 +1,4 @@
-# EV3 micropython code functions
+# EV3 on micropython. Football player robots code functions:
 
 ### movement
 
