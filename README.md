@@ -1,17 +1,7 @@
-# EV3 on micropython. Football player robots code functions:
+# EV3 on micropython. Football player robot
 
-### movement
+Made for UEF robotics course.
 
-The main movement function to perform turning and going forward actions. When the ball recognized between the two "hands", we move to moveToLine function
-Otherwise we update our values and move and turn accordingly.
+Levo EV3 running a micropython. A fun little experiment.
 
-### moveToLine
-
-This function makes the robot return to the middle line. Sometimes we use time.sleep to give some breathing room for the robot. In troubleshooting
-Delay sometimes helps with getting correct angle.
-
-This function also calls other functions such as movement in case of ball loss, checkBallControl function to check ball location, getRotation to get current angling.
-
-### deduct
-
-This method is called when we have extra spin on global values and deduct those.
+We have two IR sensors which track the ball movement and determine the movement directions. Far from perfect and prone to errors. But I enjoyed coding this.
